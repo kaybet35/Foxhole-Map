@@ -5,52 +5,62 @@ import {HttpClient} from '@angular/common/http';
 import {catchError, forkJoin, map, Observable, of, switchMap, tap, share, throwError} from 'rxjs';
 
 export type TeamId = "NONE" | "WARDENS" | "COLONIALS";
-export type Shard = "able" | "baker" | "charlie";
+export type Shard = "able" | "baker" | "charlie" | "dev";
 
 export type HexName =
-  | "DeadLandsHex"
-  | "CallahansPassageHex"
+  | "TheFingersHex"
+  | "KuuraStrandHex"
+  | "TempestIslandHex"
   | "MarbanHollow"
-  | "DrownedValeHex"
-  | "UmbralWildwoodHex"
-  | "LochMorHex"
-  | "LinnMercyHex"
-  | "WeatheredExpanseHex"
-  | "StlicanShelfHex"
+  | "EndlessShoreHex"
+  | "GutterHex"
+  | "WrestaHex"
+  | "TyrantFoothillsHex"
   | "WestgateHex"
+  | "MooringCountyHex"
+  | "LochMorHex"
+  | "MorgensCrossingHex"
+  | "RedRiverHex"
+  | "HowlCountyHex"
+  | "ClahstraHex"
+  | "TerminusHex"
+  | "LinnMercyHex"
+  | "ClansheadValleyHex"
+  | "PipersEnclaveHex"
+  | "GodcroftsHex"
+  | "FishermansRowHex"
+  | "UmbralWildwoodHex"
+  | "CallahansPassageHex"
+  | "LykosIsleHex"
   | "KingsCageHex"
   | "SableportHex"
-  | "OriginHex"
-  | "KalokaiHex"
-  | "AcrithiaHex"
-  | "TerminusHex"
-  | "ReaversPassHex"
-  | "TheFingersHex"
-  | "ClahstraHex"
-  | "MorgensCrossingHex"
-  | "HowlCountyHex"
-  | "BasinSionnachHex"
-  | "MooringCountyHex"
-  | "GodcroftsHex"
-  | "CallumsCapeHex"
-  | "NevishLineHex"
-  | "StemaLandingHex"
-  | "AshFieldsHex"
-  | "HeartlandsHex"
-  | "ShackledChasmHex"
   | "GreatMarchHex"
-  | "RedRiverHex"
-  | "EndlessShoreHex"
-  | "AllodsBightHex"
-  | "ReachingTrailHex"
   | "ViperPitHex"
-  | "ClansheadValleyHex"
+  | "BasinSionnachHex"
+  | "StemaLandingHex"
+  | "DeadLandsHex"
+  | "HeartlandsHex"
   | "OarbreakerHex"
-  | "SpeakingWoodsHex"
+  | "AcrithiaHex"
+  | "WeatheredExpanseHex"
+  | "ReaversPassHex"
   | "StonecradleHex"
+  | "PariPeakHex"
+  | "AllodsBightHex"
+  | "KalokaiHex"
+  | "OriginHex"
+  | "OlavisWakeHex"
+  | "ShackledChasmHex"
+  | "SpeakingWoodsHex"
+  | "NevishLineHex"
+  | "CallumsCapeHex"
+  | "ReachingTrailHex"
+  | "StlicanShelfHex"
+  | "PalantineBermHex"
+  | "AshFieldsHex"
+  | "DrownedValeHex"
   | "FarranacCoastHex"
-  | "FishermansRowHex"
-  | "TempestIslandHex";
+  | "OnyxHex";
 
 export interface WarData {
   warId: string;
@@ -172,7 +182,14 @@ export enum MapStructure {
 
   // Latest Additions
   WeatherStation = 83,      // Update 57
-  MortarHouse = 84         // Update 58
+  MortarHouse = 84,         // Update 58
+  
+  // Airborne
+  AircraftDepot    = 88,      // Update 63
+  AircraftFactory  = 89,      // Update 63
+  AircraftRadar    = 90,      // Update 63
+  AircraftRunwayT1 = 91,      // Update 63
+  AircraftRunwayT2 = 92,      // Update 63
 }
 
 // @ts-ignore
@@ -216,6 +233,11 @@ export const MapIcons: Record<MapStructure, string> = {
   [MapStructure.FacilityMineOilRig]: './assets/MapIconFacilityMineOilRig.webp',
   [MapStructure.SpecialBaseKeep]: './assets/MapIconsKeep.webp',
   [MapStructure.GarrisonStation]: './assets/MapIconBorderBase.webp',
+  [MapStructure.AircraftDepot]: './assets/MapIconAircraftDepot.png',
+  [MapStructure.AircraftFactory]: './assets/MapIconAircraftFactory.png',
+  [MapStructure.AircraftRadar]: './assets/MapIconFortLargeRadar.png',
+  [MapStructure.AircraftRunwayT1]: './assets/MapIconAircraftRunwayT1.png',
+  [MapStructure.AircraftRunwayT2]: './assets/MapIconAircraftRunwayT2.png',
 }
 
 export const VictoryPointStructure = "./assets/MapIconTownHallNeutral.webp"
@@ -287,7 +309,17 @@ export const hexFriendlyNames: Record<HexName, string> = {
   "StonecradleHex": "Stonecradle",
   "FarranacCoastHex": "Farranac Coast",
   "FishermansRowHex": "Fishermans Row",
-  "TempestIslandHex": "Tempest Island"
+  "TempestIslandHex": "Tempest Island",
+  "KuuraStrandHex": "Kuura Strand",
+  "GutterHex": "The Gutter",
+  "WrestaHex": "Wresta",
+  "TyrantFoothillsHex": "Tyrant Foothills",
+  "PipersEnclaveHex": "Piper's Enclave",
+  "LykosIsleHex": "Lykos Isle",
+  "PariPeakHex": "Pari Peak",
+  "OlavisWakeHex": "Olavi's Wake",
+  "OnyxHex": "Ónyx",
+  "PalantineBermHex": "Palantine Berm"
 };
 
 export type WarVictoryPointSummary = {
@@ -321,12 +353,14 @@ export class WarApiService {
   public static readonly ABLE_SHARD = "able";
   public static readonly BAKER_SHARD = "baker";
   public static readonly CHARLIE_SHARD = "charlie";
-  public static readonly SHARDS = [WarApiService.ABLE_SHARD, WarApiService.BAKER_SHARD, WarApiService.CHARLIE_SHARD];
+  public static readonly DEV_SHARD = "dev";
+  public static readonly SHARDS = [WarApiService.ABLE_SHARD, WarApiService.BAKER_SHARD, WarApiService.CHARLIE_SHARD, WarApiService.DEV_SHARD];
 
   private shards: Record<string, string> = {
     [WarApiService.ABLE_SHARD]: "https://war-service-live.foxholeservices.com/api",
     [WarApiService.BAKER_SHARD]: "https://war-service-live-2.foxholeservices.com/api",
     [WarApiService.CHARLIE_SHARD]: "https://war-service-live-3.foxholeservices.com/api",
+    [WarApiService.DEV_SHARD]: "https://war-service-dev.foxholeservices.com/api",
   }
 
   private cacheConfig: CacheConfig = DEFAULT_CACHE_CONFIG;

@@ -283,7 +283,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     return new TileLayer({
       extent: this.tileExtent,
       source: new XYZ({
-        url: "https://raw.githubusercontent.com/Kastow/Foxhole-Map-Tiles/master/Tiles/{z}/{z}_{x}_{y}.png",
+        url: "https://raw.githubusercontent.com/kaybet35/Foxhole-Map-Tiles/master/Tiles/{z}/{z}_{x}_{y}.png",
         interpolate: true,
         wrapX: false,
         minZoom: 0,

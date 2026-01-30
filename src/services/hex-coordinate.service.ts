@@ -24,7 +24,7 @@ export const hexCoords: Record<HexName, [number, number]> = {
   "TerminusHex": [2, -2],
   "AllodsBightHex": [2, -1],
   "ReaversPassHex": [3, -2],
-  "TheFingersHex": [4, -1],
+  "TheFingersHex": [5, -1],
   "EndlessShoreHex": [3, -1],
   "ClahstraHex": [2, 0],
   "StlicanShelfHex": [3, 0],
@@ -43,9 +43,19 @@ export const hexCoords: Record<HexName, [number, number]> = {
   "StonecradleHex": [-2, 1],
   "NevishLineHex": [-3, 1],
   "FarranacCoastHex": [-3, 0],
-  "OarbreakerHex": [-4, 1],
+  "OarbreakerHex": [-5, -1],
   "FishermansRowHex": [-4, 0],
   "StemaLandingHex": [-4, -1],
+  "KuuraStrandHex": [-4, 2],
+  "GutterHex": [-4, 1],
+  "WrestaHex": [4, -1],
+  "TyrantFoothillsHex": [5, -2],
+  "PipersEnclaveHex": [6, -1],
+  "LykosIsleHex": [5, 0],
+  "PariPeakHex": [-5, 1],
+  "OlavisWakeHex": [-6, 1],
+  "OnyxHex": [4, -2],
+  "PalantineBermHex": [-5, 0],
 };
 
 
@@ -56,7 +66,7 @@ export class HexCoordinateService {
 
   constructor() { }
 
-  public readonly hexSize = 4680;
+  public readonly hexSize = 3276;
   public readonly hexWidth = this.hexSize * 2;
   public readonly hexWidthQtr = this.hexWidth / 4;
   public readonly hexWidthHalf = this.hexWidth / 2;

@@ -66,7 +66,21 @@ export const LAYER_GROUP_CONFIGS: LayerGroup[] = [
       MapStructure.GarrisonStation,
       MapStructure.ObservationTower,
       MapStructure.CoastalGun,
-      MapStructure.MortarHouse
+      MapStructure.MortarHouse,
+    ]
+  },
+  {
+    id: 'airfield',
+    name: 'Airfield',
+    description: 'Airfield',
+    icon: 'pi pi-send',
+    color: '#964B00',
+    defaultVisible: true,
+    structures: [
+      MapStructure.AircraftDepot,
+      MapStructure.AircraftFactory,
+      MapStructure.AircraftRunwayT1,
+      MapStructure.AircraftRunwayT2,
     ]
   },
   {
@@ -78,7 +92,8 @@ export const LAYER_GROUP_CONFIGS: LayerGroup[] = [
     defaultVisible: false,
     structures: [
       MapStructure.IntelCenter,
-      MapStructure.WeatherStation
+      MapStructure.WeatherStation,
+      MapStructure.AircraftRadar,
     ]
   },
   {

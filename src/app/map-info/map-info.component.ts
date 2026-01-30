@@ -22,7 +22,9 @@ export class MapInfoComponent {
 
   public selectableShards: { label: string; value: string }[] = [
     { label: "Able", value: WarApiService.ABLE_SHARD},
-    { label: "Charlie", value: WarApiService.CHARLIE_SHARD}
+    { label: "Baker", value: WarApiService.BAKER_SHARD},
+    { label: "Charlie", value: WarApiService.CHARLIE_SHARD},
+    { label: "Dev", value: WarApiService.DEV_SHARD},
   ];
 
   shard: Signal<Shard> = this.settingsService.selectedShard;
